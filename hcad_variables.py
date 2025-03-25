@@ -1,0 +1,46 @@
+hcad_cookies = {
+    '__cf_bm': 'mn2zhSK7ST8MpwGJivJdrcj_7FlFsjNqcyJy.y1udWA-1742431093-1.0.1.1-l60OR6p6hD3C1pP5kgYlGpNCxeZlBEXgUgRmEuDfohhehusmNiLM3JHTOvzImLF_MGiJYuXu6VXgyWy7tTKhDZr2LhyL2AHOw55aJqFmomQ',
+    'cf_clearance': 'xKRi5dI2h6dOXzZJVJUT5RwLLOAMxDbQovjeyAHmGnY-1742431095-1.2.1.1-8UbefyhMGhWS1tU1AV7uX8MUTzC0NgnBPrVg84J0HVmqkC.dPWpqC4Ed3GM9euEPPuD_A_q1CXDAcEUwJaXkZUObkDw4qFLU_lJ2he.f7vdgx18giX8pY9zqqvd1E.g.oHdRcUZAY6ShcpWNm4kEQM0UB2L67QTWP5nc_HpKWQ3c0G96xCrHp4dg5OLEiWNS6d1jvYzq_MIEiD0LfKAIJT4sKj9QayKmpCkYb8h7HX7MQAQLjTkWpieV6n4VsjBpZTMemrn04FWuKJU.Vzt39r8YNXojVCmo80Py3pgx0ZPMJSxSUa0tzfkzcP8_VRLP8Vu..RiSk54mDRFTvcCQlI_FZcQg7EUesH.TnVay8io',
+    'ASPSESSIONIDAECARRDT': 'BNPBFHEBIIPCPEIEIOLAGNJO',
+}
+
+hcad_headers = {
+    'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+    'accept-language': 'en-US,en;q=0.9',
+    'dnt': '1',
+    'priority': 'u=0, i',
+    'referer': 'https://public.hcad.org/records/Real/Advanced.asp',
+    'sec-ch-ua': '"Not:A-Brand";v="24", "Chromium";v="134"',
+    'sec-ch-ua-mobile': '?0',
+    'sec-ch-ua-platform': '"macOS"',
+    'sec-fetch-dest': 'iframe',
+    'sec-fetch-mode': 'navigate',
+    'sec-fetch-site': 'same-origin',
+    'sec-fetch-user': '?1',
+    'upgrade-insecure-requests': '1',
+    'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36',
+    # 'cookie': '__cf_bm=mn2zhSK7ST8MpwGJivJdrcj_7FlFsjNqcyJy.y1udWA-1742431093-1.0.1.1-l60OR6p6hD3C1pP5kgYlGpNCxeZlBEXgUgRmEuDfohhehusmNiLM3JHTOvzImLF_MGiJYuXu6VXgyWy7tTKhDZr2LhyL2AHOw55aJqFmomQ; cf_clearance=xKRi5dI2h6dOXzZJVJUT5RwLLOAMxDbQovjeyAHmGnY-1742431095-1.2.1.1-8UbefyhMGhWS1tU1AV7uX8MUTzC0NgnBPrVg84J0HVmqkC.dPWpqC4Ed3GM9euEPPuD_A_q1CXDAcEUwJaXkZUObkDw4qFLU_lJ2he.f7vdgx18giX8pY9zqqvd1E.g.oHdRcUZAY6ShcpWNm4kEQM0UB2L67QTWP5nc_HpKWQ3c0G96xCrHp4dg5OLEiWNS6d1jvYzq_MIEiD0LfKAIJT4sKj9QayKmpCkYb8h7HX7MQAQLjTkWpieV6n4VsjBpZTMemrn04FWuKJU.Vzt39r8YNXojVCmo80Py3pgx0ZPMJSxSUa0tzfkzcP8_VRLP8Vu..RiSk54mDRFTvcCQlI_FZcQg7EUesH.TnVay8io; ASPSESSIONIDAECARRDT=BNPBFHEBIIPCPEIEIOLAGNJO',
+}
+
+hcad_params = {
+    'name': '',
+    'stname': '',
+    'bstnum': '',
+    'estnum': '',
+    'zip': '',
+    'kmap': '',
+    'facet': '',
+    'isd': '',
+    'StateCategory': '',
+    'BSC': '',
+    'LUC': '',
+    'nbhd': '',
+    'val': '',
+    'valrange': '.10',
+    'sqft': '',
+    'sqftrange': '.10',
+    'Sort': 'Account',
+    'bstep': '0',
+    'taxyear': '2025',
+    'Search': 'Search',
+}
