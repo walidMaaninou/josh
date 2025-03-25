@@ -33,6 +33,9 @@ def scrape_hctx(start_date, end_date, doc_type):
     url = "https://www.cclerk.hctx.net/Applications/WebSearch/RP_R.aspx?ID=PtRyJzbPPV9CWT5QJ8WvKEFVAr+pwQL/1XGVmC/aHdfP+DIXvYNpdnX9R8yeQC2XXgkUgoYdO2y3PRZ2zTfJGhb/6xRICV2VPFSofHebrWv7hxYW2UwdAi1h77pFQpJntC2qr8qMihkZHUM/4mzhH1C9e7qmkcSdI3sSSVXPAtA="
     options = webdriver.ChromeOptions()
     options.add_argument('--headless')
+    options.add_argument("--disable-gpu")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
     service = Service(ChromeDriverManager(driver_version="120.0.6099.224").install())
     # service = Service(ChromeDriverManager(driver_version="134.0.6998.89").install())
     driver = webdriver.Chrome(options=options, service=service)
