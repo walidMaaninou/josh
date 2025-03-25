@@ -87,7 +87,7 @@ def scrape_hctx(start_date, end_date, doc_type):
             if next_button.is_enabled():
                 print("Clicking Next button...")
                 next_button.click()
-                time.sleep(2)
+                time.sleep(5)
                 wait_for_loading_to_finish(driver)
             else:
                 print("Next button is disabled. Stopping.")
