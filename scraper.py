@@ -59,6 +59,7 @@ def scrape_hctx(start_date, end_date, doc_type):
     # Click the search button
     button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.ID, "ctl00_ContentPlaceHolder1_btnSearch")))
     button.click()
+    time.sleep(5)
     all_data = []  # To store all rows from all pages
     page = 1
     while True:
