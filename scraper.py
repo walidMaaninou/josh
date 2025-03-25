@@ -70,7 +70,7 @@ def scrape_hctx(start_date, end_date, doc_type):
             response = driver.page_source
             soup = BeautifulSoup(response, 'html.parser')
             table = soup.find('table', {'id': 'itemPlaceholderContainer'})
-            df = pd.read_html(str(table), 'lxml')[0]  # Extract table using BeautifulSoup
+            df = pd.read_html(str(table))[0]  # Extract table using BeautifulSoup
             length = len(list(df["Legal Description"].dropna()))
             
             all_data += list(df["Legal Description"].dropna())
