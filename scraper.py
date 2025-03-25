@@ -70,19 +70,18 @@ def scrape_hctx(start_date, end_date, doc_type):
         wait_for_loading_to_finish(driver)
         print(driver.page_source)
         # Wait for the table to appear
-        try:
-            response = driver.page_source
-            soup = BeautifulSoup(response, 'html.parser')
-            table = soup.find('table', {'id': 'itemPlaceholderContainer'})
-            df = pd.read_html(str(table))[0]  # Extract table using BeautifulSoup
-            length = len(list(df["Legal Description"].dropna()))
-            
-            all_data += list(df["Legal Description"].dropna())
-            log_message(f"Scraping page {page}, got {length} with a total of {len(all_data)}")
-            page += 1
-        except Exception:
-            print("No records found. Stopping.")
-            break
+        response = driver.page_source
+        soup = BeautifulSoup(response, 'html.parser')
+        table = soup.find('table', {'id': 'itemPlaceholderContainer'})
+        df = pd.read_html(str(table))[0]  # Extract table using BeautifulSoup
+        length = len(list(df["Legal Description"].dropna()))
+        
+        all_data += list(df["Legal Description"].dropna())
+        log_message(f"Scraping page {page}, got {length} with a total of {len(all_data)}")
+        page += 1
+        # except Exception:
+        #     print("No records found. Stopping.")
+        #     break
         
         # Try clicking the next button using JavaScript
         try:
