@@ -2,3 +2,4 @@ selenium
 webdriver-manager
 bs4
 openpyxl
+pandas==2.2.2
