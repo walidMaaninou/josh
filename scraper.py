@@ -41,67 +41,66 @@ def scrape_hctx(start_date, end_date, doc_type):
     driver = webdriver.Chrome(options=options, service=service)
     driver.get(url)
     
-    try:
-        # Wait for the date input fields to be present
-        wait = WebDriverWait(driver, 10)
+    # Wait for the date input fields to be present
+    wait = WebDriverWait(driver, 10)
+    
+    # Fill in the start date
+    start_date_input = wait.until(EC.presence_of_element_located((By.ID, "ctl00_ContentPlaceHolder1_txtDateN")))
+    start_date_input.send_keys(start_date)
+    
+    # Fill in the end date
+    end_date_input = driver.find_element(By.ID, "ctl00_ContentPlaceHolder1_txtDateTo")
+    end_date_input.send_keys(end_date)
+    
+    # Fill in the document type
+    doc_type_input = driver.find_element(By.ID, "ctl00_ContentPlaceHolder1_txtType")
+    doc_type_input.send_keys(doc_type)
+    
+    # Click the search button
+    button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.ID, "ctl00_ContentPlaceHolder1_btnSearch")))
+    button.click()
+    time.sleep(2)
+    
+    
+    all_data = []  # To store all rows from all pages
+    page = 1
+    while True:
+        print("Waiting for results to load...")
+        wait_for_loading_to_finish(driver)
         
-        # Fill in the start date
-        start_date_input = wait.until(EC.presence_of_element_located((By.ID, "ctl00_ContentPlaceHolder1_txtDateN")))
-        start_date_input.send_keys(start_date)
-        
-        # Fill in the end date
-        end_date_input = driver.find_element(By.ID, "ctl00_ContentPlaceHolder1_txtDateTo")
-        end_date_input.send_keys(end_date)
-        
-        # Fill in the document type
-        doc_type_input = driver.find_element(By.ID, "ctl00_ContentPlaceHolder1_txtType")
-        doc_type_input.send_keys(doc_type)
-        
-        # Click the search button
-        button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.ID, "ctl00_ContentPlaceHolder1_btnSearch")))
-        button.click()
-        time.sleep(2)
-        
-        
-        all_data = []  # To store all rows from all pages
-        page = 1
-        while True:
-            print("Waiting for results to load...")
-            wait_for_loading_to_finish(driver)
+        # Wait for the table to appear
+        try:
+            response = driver.page_source
+            soup = BeautifulSoup(response, 'html.parser')
+            table = soup.find('table', {'id': 'itemPlaceholderContainer'})
+            df = pd.read_html(str(table))[0]  # Extract table using BeautifulSoup
+            length = len(list(df["Legal Description"].dropna()))
             
-            # Wait for the table to appear
-            try:
-                response = driver.page_source
-                soup = BeautifulSoup(response, 'html.parser')
-                table = soup.find('table', {'id': 'itemPlaceholderContainer'})
-                df = pd.read_html(str(table))[0]  # Extract table using BeautifulSoup
-                length = len(list(df["Legal Description"].dropna()))
-                
-                all_data += list(df["Legal Description"].dropna())
-                log_message(f"Scraping page {page}, got {length} with a total of {len(all_data)}")
-                page += 1
-            except Exception:
-                print("No records found. Stopping.")
-                break
-            
-            # Try clicking the next button using JavaScript
-            try:
-                next_button = driver.find_element(By.ID, "ctl00_ContentPlaceHolder1_BtnNext")
-                if next_button.is_enabled():
-                    print("Clicking Next button...")
-                    next_button.click()
-                    time.sleep(2)
-                    wait_for_loading_to_finish(driver)
-                else:
-                    print("Next button is disabled. Stopping.")
-                    break
-            except Exception as e:
-                print("Error clicking Next button:", e)
-                break
+            all_data += list(df["Legal Description"].dropna())
+            log_message(f"Scraping page {page}, got {length} with a total of {len(all_data)}")
+            page += 1
+        except Exception:
+            print("No records found. Stopping.")
+            break
         
-    finally:
-        print(driver.page_source)
-        driver.quit()
+        # Try clicking the next button using JavaScript
+        try:
+            next_button = driver.find_element(By.ID, "ctl00_ContentPlaceHolder1_BtnNext")
+            if next_button.is_enabled():
+                print("Clicking Next button...")
+                next_button.click()
+                time.sleep(2)
+                wait_for_loading_to_finish(driver)
+            else:
+                print("Next button is disabled. Stopping.")
+                break
+        except Exception as e:
+            print("Error clicking Next button:", e)
+            break
+    
+    # finally:
+    #     print(driver.page_source)
+    #     driver.quit()
     
     return all_data
 
