@@ -3,3 +3,4 @@ webdriver-manager
 bs4
 openpyxl
 pandas==2.2.2
+lxml==5.2.2
