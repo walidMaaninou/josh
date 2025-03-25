@@ -68,7 +68,7 @@ def scrape_hctx(start_date, end_date, doc_type):
         print("Waiting for results to load...")
         log_message("Waiting for results to load...", "⏳")
         wait_for_loading_to_finish(driver)
-        
+        print(driver.page_source)
         # Wait for the table to appear
         try:
             response = driver.page_source
