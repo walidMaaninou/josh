@@ -59,28 +59,26 @@ def scrape_hctx(start_date, end_date, doc_type):
     # Click the search button
     button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.ID, "ctl00_ContentPlaceHolder1_btnSearch")))
     button.click()
-    time.sleep(10)
-    
-    
     all_data = []  # To store all rows from all pages
     page = 1
     while True:
-        print("Waiting for results to load...")
-        log_message("Waiting for results to load...", "⏳")
-        wait_for_loading_to_finish(driver)
-        # Wait for the table to appear
-        response = driver.page_source
-        soup = BeautifulSoup(response, 'html.parser')
-        table = soup.find('table', {'id': 'itemPlaceholderContainer'})
-        df = pd.read_html(str(table))[0]  # Extract table using BeautifulSoup
-        length = len(list(df["Legal Description"].dropna()))
-        
-        all_data += list(df["Legal Description"].dropna())
-        log_message(f"Scraping page {page}, got {length} with a total of {len(all_data)}")
-        page += 1
-        # except Exception:
-        #     print("No records found. Stopping.")
-        #     break
+        try:
+            print("Waiting for results to load...")
+            log_message("Waiting for results to load...", "⏳")
+            wait_for_loading_to_finish(driver)
+            # Wait for the table to appear
+            response = driver.page_source
+            soup = BeautifulSoup(response, 'html.parser')
+            table = soup.find('table', {'id': 'itemPlaceholderContainer'})
+            df = pd.read_html(str(table), 'lxml')[0]  # Extract table using BeautifulSoup
+            length = len(list(df["Legal Description"].dropna()))
+            
+            all_data += list(df["Legal Description"].dropna())
+            log_message(f"Scraping page {page}, got {length} with a total of {len(all_data)}")
+            page += 1
+        except Exception:
+            print("No records found. Stopping.")
+            break
         
         # Try clicking the next button using JavaScript
         try:
