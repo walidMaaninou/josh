@@ -68,7 +68,7 @@ def scrape_hctx(start_date, end_date, doc_type):
             wait_for_loading_to_finish(driver)
             # Wait for the table to appear
             response = driver.page_source
-            soup = BeautifulSoup(response, 'html.parser')
+            soup = BeautifulSoup(response, 'lxml')
             table = soup.find('table', {'id': 'itemPlaceholderContainer'})
             df = pd.read_html(str(table))[0]  # Extract table using BeautifulSoup
             length = len(list(df["Legal Description"].dropna()))
