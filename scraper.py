@@ -100,6 +100,7 @@ def scrape_hctx(start_date, end_date, doc_type):
                 break
         
     finally:
+        print(driver.page_source)
         driver.quit()
     
     return all_data
